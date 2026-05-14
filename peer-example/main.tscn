@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://dh1k34ct3pxj3"]
+
+[ext_resource type="Script" uid="uid://da1irasw6jfcu" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://dybj1yskdysbb" path="res://player.gd" id="2_0xm2m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0xm2m"]
+radius = 24.0
+
+[node name="main" type="Node2D" unique_id=860042198]
+script = ExtResource("1_ig7tw")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1316270431]
+offset_left = 1232.0
+offset_top = 672.0
+offset_right = 1272.0
+offset_bottom = 712.0
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=172910416]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 48.0
+offset_bottom = 48.0
+
+[node name="ColorRect3" type="ColorRect" parent="." unique_id=1685606458]
+offset_left = 8.0
+offset_top = 672.0
+offset_right = 48.0
+offset_bottom = 712.0
+
+[node name="ColorRect4" type="ColorRect" parent="." unique_id=954642163]
+offset_left = 1232.0
+offset_top = 8.0
+offset_right = 1272.0
+offset_bottom = 48.0
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1107238705]
+position = Vector2(640, 320)
+script = ExtResource("2_0xm2m")
+
+[node name="ColorRect5" type="ColorRect" parent="Player" unique_id=321942213]
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+color = Color(0.62662435, 0.31767508, 0.7143368, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=227912268]
+shape = SubResource("CircleShape2D_0xm2m")

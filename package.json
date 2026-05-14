@@ -1,0 +1,15 @@
+{
+  "name": "game",
+  "version": "1.0.0",
+  "description": "Example node.js server for locally testing exported Godot 4 web builds",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Liana P",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
