@@ -1,0 +1,181 @@
+[gd_scene format=3 uid="uid://bhvwdabacmyda"]
+
+[sub_resource type="Theme" id="Theme_mq7d1"]
+
+[sub_resource type="Theme" id="Theme_5rswr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_npm0p"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.5137255, 0.21960784, 0.9254902, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3f0tl"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.22745098, 0.5254902, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kcflt"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.22745098, 0.5254902, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="join" type="Node2D" unique_id=638687117]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=143351222]
+offset_right = 1280.0
+offset_bottom = 728.0
+color = Color(1, 0.74509805, 0.043137256, 1)
+
+[node name="Title" type="Node2D" parent="." unique_id=1746841065]
+position = Vector2(128, 64)
+
+[node name="ColorRect" type="ColorRect" parent="Title" unique_id=1478635893]
+offset_right = 448.0
+offset_bottom = 64.0
+color = Color(1, 0, 0.43137255, 1)
+
+[node name="Label" type="Label" parent="Title" unique_id=1089960502]
+offset_left = 16.0
+offset_right = 384.0
+offset_bottom = 64.0
+theme = SubResource("Theme_mq7d1")
+theme_override_font_sizes/font_size = 42
+text = "Enter Code"
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="." unique_id=821456143]
+offset_left = 128.0
+offset_top = 160.0
+offset_right = 416.0
+offset_bottom = 224.0
+theme_override_font_sizes/font_size = 21
+text = "This is an example join code that ends"
+
+[node name="Enter" type="Button" parent="." unique_id=1020705454]
+offset_left = 448.0
+offset_top = 160.0
+offset_right = 576.0
+offset_bottom = 224.0
+theme = SubResource("Theme_5rswr")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_npm0p")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3f0tl")
+text = "Enter"
+
+[node name="Players" type="Node2D" parent="." unique_id=1473876659]
+position = Vector2(768, 64)
+
+[node name="ColorRect" type="ColorRect" parent="Players" unique_id=784398425]
+offset_right = 384.0
+offset_bottom = 64.0
+color = Color(1, 0, 0.43137255, 1)
+
+[node name="Label" type="Label" parent="Players" unique_id=1338280072]
+offset_left = 16.0
+offset_right = 384.0
+offset_bottom = 64.0
+theme = SubResource("Theme_mq7d1")
+theme_override_font_sizes/font_size = 42
+text = "Players"
+vertical_alignment = 1
+
+[node name="Name" type="Node2D" parent="." unique_id=2084140408]
+position = Vector2(800, 160)
+
+[node name="ColorRect" type="ColorRect" parent="Name" unique_id=1766247652]
+offset_right = 352.0
+offset_bottom = 64.0
+color = Color(0.9843137, 0.3372549, 0.02745098, 1)
+
+[node name="Label" type="Label" parent="Name" unique_id=762408441]
+offset_left = 16.0
+offset_right = 384.0
+offset_bottom = 64.0
+theme = SubResource("Theme_mq7d1")
+theme_override_font_sizes/font_size = 36
+text = "Player Name"
+vertical_alignment = 1
+
+[node name="Name2" type="Node2D" parent="." unique_id=1365967228]
+position = Vector2(800, 256)
+
+[node name="ColorRect" type="ColorRect" parent="Name2" unique_id=1969477731]
+offset_right = 352.0
+offset_bottom = 64.0
+color = Color(0.9843137, 0.3372549, 0.02745098, 1)
+
+[node name="Label" type="Label" parent="Name2" unique_id=42033992]
+offset_left = 16.0
+offset_right = 384.0
+offset_bottom = 64.0
+theme = SubResource("Theme_mq7d1")
+theme_override_font_sizes/font_size = 36
+text = "Player Name"
+vertical_alignment = 1
+
+[node name="Name3" type="Node2D" parent="." unique_id=1233017203]
+position = Vector2(800, 352)
+
+[node name="ColorRect" type="ColorRect" parent="Name3" unique_id=1677389600]
+offset_right = 352.0
+offset_bottom = 64.0
+color = Color(0.9843137, 0.3372549, 0.02745098, 1)
+
+[node name="Label" type="Label" parent="Name3" unique_id=1411371806]
+offset_left = 16.0
+offset_right = 384.0
+offset_bottom = 64.0
+theme = SubResource("Theme_mq7d1")
+theme_override_font_sizes/font_size = 36
+text = "Player Name"
+vertical_alignment = 1
+
+[node name="Name4" type="Node2D" parent="." unique_id=471689349]
+position = Vector2(800, 448)
+
+[node name="ColorRect" type="ColorRect" parent="Name4" unique_id=1827520872]
+offset_right = 352.0
+offset_bottom = 64.0
+color = Color(0.9843137, 0.3372549, 0.02745098, 1)
+
+[node name="Label" type="Label" parent="Name4" unique_id=191803187]
+offset_left = 16.0
+offset_right = 384.0
+offset_bottom = 64.0
+theme = SubResource("Theme_mq7d1")
+theme_override_font_sizes/font_size = 36
+text = "Player Name"
+vertical_alignment = 1
+
+[node name="Back" type="Button" parent="." unique_id=1883073869]
+offset_left = 128.0
+offset_top = 576.0
+offset_right = 320.0
+offset_bottom = 640.0
+theme = SubResource("Theme_5rswr")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_npm0p")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kcflt")
+text = "Back
+"

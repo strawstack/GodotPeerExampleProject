@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="PeerExample"
-run/main_scene="uid://dh1k34ct3pxj3"
+run/main_scene="uid://cqlcn2jafxuhm"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 
 [display]

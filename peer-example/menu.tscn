@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://cqlcn2jafxuhm"]
+
+[sub_resource type="Theme" id="Theme_vsb4k"]
+
+[sub_resource type="Theme" id="Theme_lti8b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ouk20"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.5137255, 0.21960784, 0.9254902, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vsb4k"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.22745098, 0.5254902, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lti8b"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.22745098, 0.5254902, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="menu" type="Node2D" unique_id=2040033555]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1007370906]
+offset_right = 1280.0
+offset_bottom = 728.0
+color = Color(1, 0.74509805, 0.043137256, 1)
+
+[node name="Title" type="Node2D" parent="." unique_id=331740717]
+position = Vector2(448, 256)
+
+[node name="ColorRect" type="ColorRect" parent="Title" unique_id=252357108]
+offset_right = 384.0
+offset_bottom = 64.0
+color = Color(1, 0, 0.43137255, 1)
+
+[node name="Label" type="Label" parent="Title" unique_id=1705726610]
+offset_left = 16.0
+offset_right = 384.0
+offset_bottom = 64.0
+theme = SubResource("Theme_vsb4k")
+theme_override_font_sizes/font_size = 42
+text = "Peer Example"
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="." unique_id=936049098]
+offset_left = 384.0
+offset_top = 384.0
+offset_right = 576.0
+offset_bottom = 448.0
+theme = SubResource("Theme_lti8b")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_ouk20")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vsb4k")
+text = "Host"
+
+[node name="Button2" type="Button" parent="." unique_id=1276038604]
+offset_left = 704.0
+offset_top = 384.0
+offset_right = 896.0
+offset_bottom = 448.0
+theme = SubResource("Theme_lti8b")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_ouk20")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lti8b")
+text = "Join"
