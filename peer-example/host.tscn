@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://omp6ob1gtnn0"]
 
+[ext_resource type="Script" uid="uid://ccjgftimrtjyf" path="res://host.gd" id="1_0wu4t"]
+
 [sub_resource type="Theme" id="Theme_87kjm"]
 
 [sub_resource type="Theme" id="Theme_0wu4t"]
@@ -41,21 +43,22 @@ corner_radius_bottom_left = 3
 corner_detail = 5
 
 [node name="host" type="Node2D" unique_id=1169329030]
+script = ExtResource("1_0wu4t")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=116726192]
 offset_right = 1280.0
 offset_bottom = 728.0
 color = Color(1, 0.74509805, 0.043137256, 1)
 
-[node name="Title" type="Node2D" parent="." unique_id=782093822]
-position = Vector2(128, 64)
+[node name="ShareCode" type="Node2D" parent="." unique_id=782093822]
+position = Vector2(64, 64)
 
-[node name="ColorRect" type="ColorRect" parent="Title" unique_id=1051902863]
+[node name="ColorRect" type="ColorRect" parent="ShareCode" unique_id=1051902863]
 offset_right = 448.0
 offset_bottom = 64.0
 color = Color(1, 0, 0.43137255, 1)
 
-[node name="Label" type="Label" parent="Title" unique_id=2073042392]
+[node name="Label" type="Label" parent="ShareCode" unique_id=2073042392]
 offset_left = 16.0
 offset_right = 384.0
 offset_bottom = 64.0
@@ -65,17 +68,18 @@ text = "Share Code"
 vertical_alignment = 1
 
 [node name="LineEdit" type="LineEdit" parent="." unique_id=128626548]
-offset_left = 128.0
+offset_left = 64.0
 offset_top = 160.0
-offset_right = 416.0
+offset_right = 352.0
 offset_bottom = 224.0
 theme_override_font_sizes/font_size = 21
 text = "This is an example join code that ends"
+editable = false
 
 [node name="Copy" type="Button" parent="." unique_id=609827549]
-offset_left = 448.0
+offset_left = 384.0
 offset_top = 160.0
-offset_right = 576.0
+offset_right = 512.0
 offset_bottom = 224.0
 theme = SubResource("Theme_0wu4t")
 theme_override_font_sizes/font_size = 36
@@ -84,7 +88,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_by7ma")
 text = "Copy"
 
 [node name="Players" type="Node2D" parent="." unique_id=1911217341]
-position = Vector2(768, 64)
+position = Vector2(704, 64)
 
 [node name="ColorRect" type="ColorRect" parent="Players" unique_id=1647235247]
 offset_right = 384.0
@@ -101,7 +105,7 @@ text = "Players"
 vertical_alignment = 1
 
 [node name="Name" type="Node2D" parent="." unique_id=1146596741]
-position = Vector2(800, 160)
+position = Vector2(736, 144)
 
 [node name="ColorRect" type="ColorRect" parent="Name" unique_id=2064179358]
 offset_right = 352.0
@@ -118,7 +122,7 @@ text = "Player Name"
 vertical_alignment = 1
 
 [node name="Name2" type="Node2D" parent="." unique_id=1738934021]
-position = Vector2(800, 256)
+position = Vector2(736, 224)
 
 [node name="ColorRect" type="ColorRect" parent="Name2" unique_id=1182876044]
 offset_right = 352.0
@@ -135,7 +139,7 @@ text = "Player Name"
 vertical_alignment = 1
 
 [node name="Name3" type="Node2D" parent="." unique_id=1515022012]
-position = Vector2(800, 352)
+position = Vector2(736, 304)
 
 [node name="ColorRect" type="ColorRect" parent="Name3" unique_id=402108664]
 offset_right = 352.0
@@ -152,7 +156,7 @@ text = "Player Name"
 vertical_alignment = 1
 
 [node name="Name4" type="Node2D" parent="." unique_id=2060521548]
-position = Vector2(800, 448)
+position = Vector2(736, 384)
 
 [node name="ColorRect" type="ColorRect" parent="Name4" unique_id=1055295373]
 offset_right = 352.0
@@ -168,10 +172,27 @@ theme_override_font_sizes/font_size = 36
 text = "Player Name"
 vertical_alignment = 1
 
+[node name="Name5" type="Node2D" parent="." unique_id=554991658]
+position = Vector2(736, 464)
+
+[node name="ColorRect" type="ColorRect" parent="Name5" unique_id=391472408]
+offset_right = 352.0
+offset_bottom = 64.0
+color = Color(0.9843137, 0.3372549, 0.02745098, 1)
+
+[node name="Label" type="Label" parent="Name5" unique_id=1818046416]
+offset_left = 16.0
+offset_right = 384.0
+offset_bottom = 64.0
+theme = SubResource("Theme_87kjm")
+theme_override_font_sizes/font_size = 36
+text = "Player Name"
+vertical_alignment = 1
+
 [node name="Back" type="Button" parent="." unique_id=1042496573]
-offset_left = 128.0
+offset_left = 64.0
 offset_top = 576.0
-offset_right = 320.0
+offset_right = 256.0
 offset_bottom = 640.0
 theme = SubResource("Theme_0wu4t")
 theme_override_font_sizes/font_size = 36
@@ -192,3 +213,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_p3hcb")
 text = "Start
 
 "
+
+[connection signal="pressed" from="Copy" to="." method="_on_copy_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

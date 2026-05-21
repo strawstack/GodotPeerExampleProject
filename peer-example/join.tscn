@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://bhvwdabacmyda"]
 
+[ext_resource type="Script" uid="uid://bpv2usmldf00k" path="res://join.gd" id="1_5rswr"]
+
 [sub_resource type="Theme" id="Theme_mq7d1"]
 
 [sub_resource type="Theme" id="Theme_5rswr"]
@@ -40,7 +42,10 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
+[sub_resource type="Theme" id="Theme_npm0p"]
+
 [node name="join" type="Node2D" unique_id=638687117]
+script = ExtResource("1_5rswr")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=143351222]
 offset_right = 1280.0
@@ -48,7 +53,7 @@ offset_bottom = 728.0
 color = Color(1, 0.74509805, 0.043137256, 1)
 
 [node name="Title" type="Node2D" parent="." unique_id=1746841065]
-position = Vector2(128, 64)
+position = Vector2(64, 64)
 
 [node name="ColorRect" type="ColorRect" parent="Title" unique_id=1478635893]
 offset_right = 448.0
@@ -65,17 +70,17 @@ text = "Enter Code"
 vertical_alignment = 1
 
 [node name="LineEdit" type="LineEdit" parent="." unique_id=821456143]
-offset_left = 128.0
+offset_left = 64.0
 offset_top = 160.0
-offset_right = 416.0
+offset_right = 352.0
 offset_bottom = 224.0
 theme_override_font_sizes/font_size = 21
 text = "This is an example join code that ends"
 
 [node name="Enter" type="Button" parent="." unique_id=1020705454]
-offset_left = 448.0
+offset_left = 384.0
 offset_top = 160.0
-offset_right = 576.0
+offset_right = 512.0
 offset_bottom = 224.0
 theme = SubResource("Theme_5rswr")
 theme_override_font_sizes/font_size = 36
@@ -83,95 +88,10 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_npm0p")
 theme_override_styles/hover = SubResource("StyleBoxFlat_3f0tl")
 text = "Enter"
 
-[node name="Players" type="Node2D" parent="." unique_id=1473876659]
-position = Vector2(768, 64)
-
-[node name="ColorRect" type="ColorRect" parent="Players" unique_id=784398425]
-offset_right = 384.0
-offset_bottom = 64.0
-color = Color(1, 0, 0.43137255, 1)
-
-[node name="Label" type="Label" parent="Players" unique_id=1338280072]
-offset_left = 16.0
-offset_right = 384.0
-offset_bottom = 64.0
-theme = SubResource("Theme_mq7d1")
-theme_override_font_sizes/font_size = 42
-text = "Players"
-vertical_alignment = 1
-
-[node name="Name" type="Node2D" parent="." unique_id=2084140408]
-position = Vector2(800, 160)
-
-[node name="ColorRect" type="ColorRect" parent="Name" unique_id=1766247652]
-offset_right = 352.0
-offset_bottom = 64.0
-color = Color(0.9843137, 0.3372549, 0.02745098, 1)
-
-[node name="Label" type="Label" parent="Name" unique_id=762408441]
-offset_left = 16.0
-offset_right = 384.0
-offset_bottom = 64.0
-theme = SubResource("Theme_mq7d1")
-theme_override_font_sizes/font_size = 36
-text = "Player Name"
-vertical_alignment = 1
-
-[node name="Name2" type="Node2D" parent="." unique_id=1365967228]
-position = Vector2(800, 256)
-
-[node name="ColorRect" type="ColorRect" parent="Name2" unique_id=1969477731]
-offset_right = 352.0
-offset_bottom = 64.0
-color = Color(0.9843137, 0.3372549, 0.02745098, 1)
-
-[node name="Label" type="Label" parent="Name2" unique_id=42033992]
-offset_left = 16.0
-offset_right = 384.0
-offset_bottom = 64.0
-theme = SubResource("Theme_mq7d1")
-theme_override_font_sizes/font_size = 36
-text = "Player Name"
-vertical_alignment = 1
-
-[node name="Name3" type="Node2D" parent="." unique_id=1233017203]
-position = Vector2(800, 352)
-
-[node name="ColorRect" type="ColorRect" parent="Name3" unique_id=1677389600]
-offset_right = 352.0
-offset_bottom = 64.0
-color = Color(0.9843137, 0.3372549, 0.02745098, 1)
-
-[node name="Label" type="Label" parent="Name3" unique_id=1411371806]
-offset_left = 16.0
-offset_right = 384.0
-offset_bottom = 64.0
-theme = SubResource("Theme_mq7d1")
-theme_override_font_sizes/font_size = 36
-text = "Player Name"
-vertical_alignment = 1
-
-[node name="Name4" type="Node2D" parent="." unique_id=471689349]
-position = Vector2(800, 448)
-
-[node name="ColorRect" type="ColorRect" parent="Name4" unique_id=1827520872]
-offset_right = 352.0
-offset_bottom = 64.0
-color = Color(0.9843137, 0.3372549, 0.02745098, 1)
-
-[node name="Label" type="Label" parent="Name4" unique_id=191803187]
-offset_left = 16.0
-offset_right = 384.0
-offset_bottom = 64.0
-theme = SubResource("Theme_mq7d1")
-theme_override_font_sizes/font_size = 36
-text = "Player Name"
-vertical_alignment = 1
-
 [node name="Back" type="Button" parent="." unique_id=1883073869]
-offset_left = 128.0
+offset_left = 64.0
 offset_top = 576.0
-offset_right = 320.0
+offset_right = 256.0
 offset_bottom = 640.0
 theme = SubResource("Theme_5rswr")
 theme_override_font_sizes/font_size = 36
@@ -179,3 +99,107 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_npm0p")
 theme_override_styles/hover = SubResource("StyleBoxFlat_kcflt")
 text = "Back
 "
+
+[node name="Players" type="Node2D" parent="." unique_id=1057200914]
+position = Vector2(704, 64)
+
+[node name="ColorRect" type="ColorRect" parent="Players" unique_id=2064706344]
+offset_right = 384.0
+offset_bottom = 64.0
+color = Color(1, 0, 0.43137255, 1)
+
+[node name="Label" type="Label" parent="Players" unique_id=1232381241]
+offset_left = 16.0
+offset_right = 384.0
+offset_bottom = 64.0
+theme = SubResource("Theme_npm0p")
+theme_override_font_sizes/font_size = 42
+text = "Players"
+vertical_alignment = 1
+
+[node name="Name" type="Node2D" parent="." unique_id=80512138]
+position = Vector2(736, 144)
+
+[node name="ColorRect" type="ColorRect" parent="Name" unique_id=160720714]
+offset_right = 352.0
+offset_bottom = 64.0
+color = Color(0.9843137, 0.3372549, 0.02745098, 1)
+
+[node name="Label" type="Label" parent="Name" unique_id=274563026]
+offset_left = 16.0
+offset_right = 384.0
+offset_bottom = 64.0
+theme = SubResource("Theme_npm0p")
+theme_override_font_sizes/font_size = 36
+text = "Player Name"
+vertical_alignment = 1
+
+[node name="Name2" type="Node2D" parent="." unique_id=1974376340]
+position = Vector2(736, 224)
+
+[node name="ColorRect" type="ColorRect" parent="Name2" unique_id=674039856]
+offset_right = 352.0
+offset_bottom = 64.0
+color = Color(0.9843137, 0.3372549, 0.02745098, 1)
+
+[node name="Label" type="Label" parent="Name2" unique_id=1629630449]
+offset_left = 16.0
+offset_right = 384.0
+offset_bottom = 64.0
+theme = SubResource("Theme_npm0p")
+theme_override_font_sizes/font_size = 36
+text = "Player Name"
+vertical_alignment = 1
+
+[node name="Name3" type="Node2D" parent="." unique_id=932923017]
+position = Vector2(736, 304)
+
+[node name="ColorRect" type="ColorRect" parent="Name3" unique_id=68856680]
+offset_right = 352.0
+offset_bottom = 64.0
+color = Color(0.9843137, 0.3372549, 0.02745098, 1)
+
+[node name="Label" type="Label" parent="Name3" unique_id=1811273303]
+offset_left = 16.0
+offset_right = 384.0
+offset_bottom = 64.0
+theme = SubResource("Theme_npm0p")
+theme_override_font_sizes/font_size = 36
+text = "Player Name"
+vertical_alignment = 1
+
+[node name="Name4" type="Node2D" parent="." unique_id=874320776]
+position = Vector2(736, 384)
+
+[node name="ColorRect" type="ColorRect" parent="Name4" unique_id=173078076]
+offset_right = 352.0
+offset_bottom = 64.0
+color = Color(0.9843137, 0.3372549, 0.02745098, 1)
+
+[node name="Label" type="Label" parent="Name4" unique_id=1278599719]
+offset_left = 16.0
+offset_right = 384.0
+offset_bottom = 64.0
+theme = SubResource("Theme_npm0p")
+theme_override_font_sizes/font_size = 36
+text = "Player Name"
+vertical_alignment = 1
+
+[node name="Name5" type="Node2D" parent="." unique_id=404338149]
+position = Vector2(736, 464)
+
+[node name="ColorRect" type="ColorRect" parent="Name5" unique_id=232039661]
+offset_right = 352.0
+offset_bottom = 64.0
+color = Color(0.9843137, 0.3372549, 0.02745098, 1)
+
+[node name="Label" type="Label" parent="Name5" unique_id=1684662966]
+offset_left = 16.0
+offset_right = 384.0
+offset_bottom = 64.0
+theme = SubResource("Theme_npm0p")
+theme_override_font_sizes/font_size = 36
+text = "Player Name"
+vertical_alignment = 1
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

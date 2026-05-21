@@ -1,28 +1,23 @@
-extends Node2D
+extends Node
 
 var peer_bridge = null
 var is_web := false
 
 func _ready():
 	is_web = OS.has_feature("web")
-	peer_bridge = JavaScriptBridge.get_interface("peerBridge") if is_web else MockPeerBridge.new()
-
+	peer_bridge = JavaScriptBridge.get_interface("peerBridge")
+	
+	if is_web:
+		peer_bridge = JavaScriptBridge.get_interface("peerBridge")
+	else:
+		peer_bridge = MockPeerBridge.new()
+	
 	# Bind callbacks
 	peer_bridge.onPeerOpen = _on_peer_open
 	peer_bridge.onConnected = _on_connected
 	peer_bridge.onData = _on_data
-	peer_bridge.client = null
 
-func changeScene(scenePath):
-	_deferred_changeScene.call_deferred(scenePath)
-
-func _deferred_changeScene(scenePath):
-	for child in $scene.get_children():
-		child.queue_free()
-	var s = ResourceLoader.load(scenePath)
-	$scene.add_child(s.instantiate())
-
-# PeerJS
+	peer_bridge.createPeer()
 
 func create_peer(id: String):
 	peer_bridge.createPeer(id)
