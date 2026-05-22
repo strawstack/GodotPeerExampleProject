@@ -4,15 +4,15 @@ var gc
 
 func _ready():
 	gc = get_tree().get_root().get_node("main")
-	gc.peer_bridge.createPeer()
+	gc.isHost = true
+	gc.create_peer()
 
 func _process(delta):
-	var id = gc.peer_bridge.peer.id
-	if id:
-		$LineEdit.set_text(id)
+	if gc.peerId: 
+		$LineEdit.set_text(gc.peerId)
 
 func _on_back_pressed():
-	gc.changeScene("res://menu.tscn")
+	gc.returnToMain()
 
 func _on_copy_pressed():
 	DisplayServer.clipboard_set($LineEdit.get_text())

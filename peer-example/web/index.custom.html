@@ -111,13 +111,14 @@
     <script>
       window.peerBridge = {
         peer: null,
-        conn: null,
+        conns: {},
+        onPeerOpen: null,
 
         createPeer(id) {
           this.peer = id ? new Peer(id) : new Peer();
 
           this.peer.on("open", (peerId) => {
-            console.log("Peer opened:", peerId);
+            //console.log("Peer opened:", peerId);
 
             if (this.onPeerOpen) {
               this.onPeerOpen(peerId);
@@ -125,13 +126,17 @@
           });
 
           this.peer.on("connection", (conn) => {
-            console.log("Incoming connection");
+            //console.log("Incoming connection");
 
-            this.conn = conn;
+            this.conns[conn.peer] = conn;
+
+            if (this.onConnection) {
+              this.onConnection(conn.peer, JSON.stringify(conn.metadata ?? {}));
+            }
 
             conn.on("data", (data) => {
-              console.log("Received:", data);
-
+              //console.log("Received:", data);
+              console.log("JS: createPeer: data");
               if (this.onData) {
                 this.onData(JSON.stringify(data));
               }
@@ -139,27 +144,28 @@
           });
         },
 
-        connectPeer(peerId) {
-          this.conn = this.peer.connect(peerId);
+        connectPeer(peerId, options = {}) {
+          this.conns[peerId] = this.peer.connect(peerId, JSON.parse(options));
 
-          this.conn.on("open", () => {
-            console.log("Connected");
+          this.conns[peerId].on("open", () => {
+            //console.log("Connected");
 
             if (this.onConnected) {
               this.onConnected(peerId);
             }
           });
 
-          this.conn.on("data", (data) => {
+          this.conns[peerId].on("data", (data) => {
+            console.log("JS: connectPeer: data");
             if (this.onData) {
               this.onData(JSON.stringify(data));
             }
           });
         },
 
-        send(data) {
-          if (this.conn) {
-            this.conn.send(data);
+        send(peer_id, data) {
+          if (peer_id in this.conns) {
+            this.conns[peer_id].send(JSON.parse(data));
           }
         },
       };
