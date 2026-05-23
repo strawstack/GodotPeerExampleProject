@@ -16,7 +16,29 @@ var onPeerOpen = null
 var onConnected = null
 var onConnection = null
 var onData = null
-var lastHeartbeat = 0
+
+var HEARTBEAT_INTERVAL = 1000
+var UPDATE_INTERVAL = 1000
+
+var hostData = {
+	"lastUpdate": 0
+}
+var peerData = {
+	"lastHeartbeat": 0
+}
+
+var state = {
+	"WAIT": 0, # Waiting for players to connect
+	"ACTIVE": 1, # Game in progress
+}
+
+var dataType = {
+	"heartbeat": "heartbeat",
+	"data": "data",
+	"gamestate": "gamestate",
+}
+
+var gameState = state["WAIT"]
 
 func _ready():
 	is_web = OS.has_feature("web")
@@ -36,13 +58,25 @@ func _ready():
 	peer_bridge.onData = onData
 
 func _processPeer(delta):
-	lastHeartbeat += delta * 1000
-	if lastHeartbeat >= 3000:
+	peerData["lastHeartbeat"] += delta * 1000
+	if peerData["lastHeartbeat"] >= HEARTBEAT_INTERVAL:
 		send_data(hostId, {"type": "heartbeat"})
+
+func _processHost(delta):
+	hostData["lastUpdate"] += delta * 1000
+	if hostData["lastUpdate"] >= UPDATE_INTERVAL:
+		send_gamestate()
+
+func send_gamestate():
+	hostData["lastUpdate"] = 0
+	for id in knownPeers:
+		send_data(id, {"peers": knownPeers})
 
 func _process(delta):
 	if (not isHost) and hostId:
 		_processPeer(delta)
+	else:
+		_processHost(delta)
 
 func changeScene(scenePath):
 	_deferred_changeScene.call_deferred(scenePath)
@@ -65,8 +99,9 @@ func create_peer(id: String = ""):
 func connect_to_peer(id: String, data: Dictionary):
 	peer_bridge.connectPeer(id, JSON.stringify({"metadata": data}))
 
-func send_data(id, data):
-	lastHeartbeat = 0
+func send_data(id, data: Dictionary):
+	peerData["lastHeartbeat"] = 0
+	data["id"] = peerId # Tag data with sender ID
 	peer_bridge.send(id, JSON.stringify(data))
 
 func _on_peer_open(args):
@@ -82,6 +117,9 @@ func _on_connected(args):
 
 # Host receives connection from Peer
 func _on_connection(args):
+	if (gameState == state["ACTIVE"]):
+		# Players cannot connect if game is active
+		return
 	var id = args[0]
 	var options = JSON.parse_string(args[1])
 	if id not in knownPeers:
@@ -95,8 +133,28 @@ func _on_connection(args):
 	# print("Connected to: ", id)
 
 func _on_data(args):
-	var data = args[0]
-	# print("Received: ", data)
+	var data = JSON.parse_string(args[0])
+	var type = data["type"]
+	var id = data["id"] # Every message has a sender ID
+	
+	if isHost:
+		# All messages are used to update heartbeat 
+		knownPeers[id]["heartbeat"] = Time.get_ticks_msec()
+
+	# Host receives "data" from Peers
+	if (type == dataType["data"]):
+		data.erase("id") # Don't include sender ID in data
+		knownPeers[id]["data"] = data
+
+	# Peers receive "gamestate" from Host
+	elif (type == dataType["gamestate"]):
+		var peers = data["peers"]
+		for pid in peers:
+			var peer = peers[pid]
+			knownPeers[pid] = {
+				"username": peer["username"],
+				"data": peer["data"]
+			}
 
 class MockPeerBridge:
 	var onPeerOpen = null
