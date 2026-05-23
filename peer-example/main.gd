@@ -70,7 +70,10 @@ func _processHost(delta):
 func send_gamestate():
 	hostData["lastUpdate"] = 0
 	for id in knownPeers:
-		send_data(id, {"peers": knownPeers})
+		send_data(id, {
+			"type": "gamestate",
+			"peers": knownPeers
+		})
 
 func _process(delta):
 	if (not isHost) and hostId:
@@ -107,13 +110,11 @@ func send_data(id, data: Dictionary):
 func _on_peer_open(args):
 	var id = args[0]
 	peerId = id
-	# print("Peer open: ", id)
 
 # Peer establishes connection with host
 func _on_connected(args):
 	var id = args[0]
 	hostId = id
-	# print("Connected to: ", id)
 
 # Host receives connection from Peer
 func _on_connection(args):
@@ -127,10 +128,9 @@ func _on_connection(args):
 			"username": options["username"],
 			"heartbeat": Time.get_ticks_msec(),
 			"data": {
-				"position": Vector2.ZERO,
+				"position": {"x": 0, "y": 0},
 			}
 		}
-	# print("Connected to: ", id)
 
 func _on_data(args):
 	var data = JSON.parse_string(args[0])

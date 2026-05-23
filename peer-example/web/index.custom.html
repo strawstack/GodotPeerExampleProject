@@ -118,25 +118,18 @@
           this.peer = id ? new Peer(id) : new Peer();
 
           this.peer.on("open", (peerId) => {
-            //console.log("Peer opened:", peerId);
-
             if (this.onPeerOpen) {
               this.onPeerOpen(peerId);
             }
           });
 
           this.peer.on("connection", (conn) => {
-            //console.log("Incoming connection");
-
             this.conns[conn.peer] = conn;
-
             if (this.onConnection) {
               this.onConnection(conn.peer, JSON.stringify(conn.metadata ?? {}));
             }
 
             conn.on("data", (data) => {
-              //console.log("Received:", data);
-              console.log("JS: createPeer: data");
               if (this.onData) {
                 this.onData(JSON.stringify(data));
               }
@@ -148,15 +141,12 @@
           this.conns[peerId] = this.peer.connect(peerId, JSON.parse(options));
 
           this.conns[peerId].on("open", () => {
-            //console.log("Connected");
-
             if (this.onConnected) {
               this.onConnected(peerId);
             }
           });
 
           this.conns[peerId].on("data", (data) => {
-            console.log("JS: connectPeer: data");
             if (this.onData) {
               this.onData(JSON.stringify(data));
             }
