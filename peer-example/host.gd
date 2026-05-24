@@ -21,9 +21,10 @@ func render_players():
 	
 	# Add known players
 	for id in gc.knownPeers:
-		var pName = playerName.instantiate()
-		pName.get_node("Label").set_text(gc.knownPeers[id]["username"])
-		container.add_child(pName)
+		if not (id == gc.peerId):
+			var pName = playerName.instantiate()
+			pName.get_node("Label").set_text(gc.knownPeers[id]["username"])
+			container.add_child(pName)
 
 func _process(delta):
 	if gc.peerId: 
@@ -36,3 +37,6 @@ func _on_back_pressed():
 
 func _on_copy_pressed():
 	DisplayServer.clipboard_set($LineEdit_Code.get_text())
+
+func _on_start_pressed():
+	gc.send_game_start()

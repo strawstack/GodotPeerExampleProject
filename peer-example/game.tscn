@@ -1,19 +1,28 @@
-[gd_scene format=3 uid="uid://dh1k34ct3pxj3"]
+[gd_scene format=4 uid="uid://dh1k34ct3pxj3"]
 
 [ext_resource type="Script" uid="uid://da1irasw6jfcu" path="res://game.gd" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://dybj1yskdysbb" path="res://player.gd" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://8s3bntiapl8q" path="res://player_sprite.tscn" id="3_feb5d"]
+[ext_resource type="PackedScene" uid="uid://busjotuhvird4" path="res://wall.tscn" id="4_fc0e3"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0xm2m"]
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_7jktm"]
+scenes/1/scene = ExtResource("4_fc0e3")
+
+[sub_resource type="TileSet" id="TileSet_ryrav"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetScenesCollectionSource_7jktm")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_feb5d"]
 radius = 24.0
 
 [node name="main" type="Node2D" unique_id=860042198]
 script = ExtResource("1_ig7tw")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1316270431]
-offset_left = 1232.0
-offset_top = 672.0
-offset_right = 1272.0
-offset_bottom = 712.0
+offset_left = 1168.0
+offset_top = 656.0
+offset_right = 1208.0
+offset_bottom = 696.0
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=172910416]
 offset_left = 8.0
@@ -23,26 +32,27 @@ offset_bottom = 48.0
 
 [node name="ColorRect3" type="ColorRect" parent="." unique_id=1685606458]
 offset_left = 8.0
-offset_top = 672.0
+offset_top = 656.0
 offset_right = 48.0
-offset_bottom = 712.0
+offset_bottom = 696.0
 
 [node name="ColorRect4" type="ColorRect" parent="." unique_id=954642163]
-offset_left = 1232.0
+offset_left = 1168.0
 offset_top = 8.0
-offset_right = 1272.0
+offset_right = 1208.0
 offset_bottom = 48.0
 
-[node name="Player" type="CharacterBody2D" parent="." unique_id=1107238705]
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2059936842]
+tile_map_data = PackedByteArray("AAAAAP//AAAAAAAAAQABAP//AAAAAAAAAQACAP//AAAAAAAAAQADAP//AAAAAAAAAQAEAP//AAAAAAAAAQAFAP//AAAAAAAAAQAGAP//AAAAAAAAAQAHAP//AAAAAAAAAQAIAP//AAAAAAAAAQAJAP//AAAAAAAAAQAKAP//AAAAAAAAAQALAP//AAAAAAAAAQAMAP//AAAAAAAAAQANAP//AAAAAAAAAQAOAP//AAAAAAAAAQAPAP//AAAAAAAAAQAQAP//AAAAAAAAAQARAP//AAAAAAAAAQASAP//AAAAAAAAAQASAAsAAAAAAAAAAQARAAsAAAAAAAAAAQAQAAsAAAAAAAAAAQAPAAsAAAAAAAAAAQAOAAsAAAAAAAAAAQANAAsAAAAAAAAAAQAMAAsAAAAAAAAAAQALAAsAAAAAAAAAAQAKAAsAAAAAAAAAAQAJAAsAAAAAAAAAAQAIAAsAAAAAAAAAAQAHAAsAAAAAAAAAAQAGAAsAAAAAAAAAAQAFAAsAAAAAAAAAAQAEAAsAAAAAAAAAAQADAAsAAAAAAAAAAQACAAsAAAAAAAAAAQABAAsAAAAAAAAAAQAAAAsAAAAAAAAAAQD//wsAAAAAAAAAAQD//woAAAAAAAAAAQD//wkAAAAAAAAAAQD//wQAAAAAAAAAAQD//wMAAAAAAAAAAQD//wIAAAAAAAAAAQD//wEAAAAAAAAAAQD//wAAAAAAAAAAAQD/////AAAAAAAAAQD//wUAAAAAAAAAAQD//wYAAAAAAAAAAQD//wcAAAAAAAAAAQD//wgAAAAAAAAAAQATAP//AAAAAAAAAQATAAAAAAAAAAAAAQATAAEAAAAAAAAAAQATAAIAAAAAAAAAAQATAAMAAAAAAAAAAQATAAQAAAAAAAAAAQATAAUAAAAAAAAAAQATAAYAAAAAAAAAAQATAAcAAAAAAAAAAQATAAgAAAAAAAAAAQATAAkAAAAAAAAAAQATAAsAAAAAAAAAAQATAAoAAAAAAAAAAQA=")
+tile_set = SubResource("TileSet_ryrav")
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=525479011]
 position = Vector2(640, 320)
 script = ExtResource("2_0xm2m")
 
-[node name="ColorRect5" type="ColorRect" parent="Player" unique_id=321942213]
-offset_left = -24.0
-offset_top = -24.0
-offset_right = 24.0
-offset_bottom = 24.0
-color = Color(0.62662435, 0.31767508, 0.7143368, 1)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=816421300]
+shape = SubResource("CircleShape2D_feb5d")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=227912268]
-shape = SubResource("CircleShape2D_0xm2m")
+[node name="player_sprite" parent="Player" unique_id=1023572485 instance=ExtResource("3_feb5d")]
+
+[node name="remotePeers" type="Node2D" parent="." unique_id=1805461943]

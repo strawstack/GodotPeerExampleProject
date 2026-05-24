@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://8s3bntiapl8q"]
+
+[ext_resource type="Script" uid="uid://dyflkf3700afb" path="res://player_sprite.gd" id="1_vtwlg"]
+
+[node name="player_sprite" type="Node2D" unique_id=1023572485]
+script = ExtResource("1_vtwlg")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1286395949]
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+color = Color(0.62662435, 0.31767508, 0.7143368, 1)
+
+[node name="Label" type="Label" parent="." unique_id=2132082685]
+offset_left = -64.0
+offset_top = -48.0
+offset_right = 64.0
+offset_bottom = -25.0
+theme_override_font_sizes/font_size = 12
+text = "username"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 5

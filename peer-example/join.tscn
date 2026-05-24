@@ -82,12 +82,14 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
+[sub_resource type="Theme" id="Theme_npm0p"]
+
 [node name="join" type="Node2D" unique_id=638687117]
 script = ExtResource("1_5rswr")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1626212486]
-offset_right = 1280.0
-offset_bottom = 728.0
+offset_right = 1216.0
+offset_bottom = 704.0
 color = Color(1, 0.74509805, 0.043137256, 1)
 
 [node name="Username" type="Node2D" parent="." unique_id=159825030]
@@ -171,7 +173,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_viiso")
 text = "Paste"
 
 [node name="Players" type="Node2D" parent="." unique_id=1519057274]
-position = Vector2(832, 64)
+position = Vector2(768, 64)
 
 [node name="ColorRect" type="ColorRect" parent="Players" unique_id=1920080703]
 offset_right = 384.0
@@ -188,16 +190,16 @@ text = "Players"
 vertical_alignment = 1
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=270597109]
-offset_left = 832.0
+offset_left = 768.0
 offset_top = 144.0
-offset_right = 1216.0
+offset_right = 1152.0
 offset_bottom = 560.0
 color = Color(0.2, 0.2, 0.2, 1)
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=471048291]
-offset_left = 848.0
+offset_left = 784.0
 offset_top = 160.0
-offset_right = 1200.0
+offset_right = 1136.0
 offset_bottom = 544.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=994002618]
@@ -215,6 +217,27 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_35qqh")
 theme_override_styles/hover = SubResource("StyleBoxFlat_com2c")
 text = "Back
 "
+
+[node name="Status" type="Node2D" parent="." unique_id=313677176]
+position = Vector2(704, 576)
+
+[node name="ColorRect" type="ColorRect" parent="Status" unique_id=865167209]
+offset_left = 64.0
+offset_right = 448.0
+offset_bottom = 64.0
+theme = SubResource("Theme_npm0p")
+color = Color(1, 1, 1, 0.49803922)
+
+[node name="Label" type="Label" parent="Status" unique_id=1418220001]
+offset_left = 80.0
+offset_right = 432.0
+offset_bottom = 64.0
+theme = SubResource("Theme_5rswr")
+theme_override_colors/font_color = Color(1, 0, 0.43137255, 1)
+theme_override_font_sizes/font_size = 36
+text = "...waiting for host"
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [connection signal="pressed" from="Join" to="." method="_on_join_pressed"]
 [connection signal="pressed" from="Paste" to="." method="_on_paste_pressed"]

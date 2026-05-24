@@ -104,8 +104,8 @@ corner_detail = 5
 script = ExtResource("1_0wu4t")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=116726192]
-offset_right = 1280.0
-offset_bottom = 728.0
+offset_right = 1216.0
+offset_bottom = 704.0
 color = Color(1, 0.74509805, 0.043137256, 1)
 
 [node name="Username" type="Node2D" parent="." unique_id=1282617610]
@@ -177,7 +177,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_by7ma")
 text = "Copy"
 
 [node name="Players" type="Node2D" parent="." unique_id=1911217341]
-position = Vector2(832, 64)
+position = Vector2(768, 64)
 
 [node name="ColorRect" type="ColorRect" parent="Players" unique_id=1647235247]
 offset_right = 384.0
@@ -194,16 +194,16 @@ text = "Players"
 vertical_alignment = 1
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=1084273555]
-offset_left = 832.0
+offset_left = 768.0
 offset_top = 144.0
-offset_right = 1216.0
+offset_right = 1152.0
 offset_bottom = 560.0
 color = Color(0.2, 0.2, 0.2, 1)
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1840135923]
-offset_left = 848.0
+offset_left = 784.0
 offset_top = 160.0
-offset_right = 1200.0
+offset_right = 1136.0
 offset_bottom = 544.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=825381342]
@@ -211,9 +211,9 @@ layout_mode = 2
 theme_override_constants/separation = 16
 
 [node name="Start" type="Button" parent="." unique_id=915892206]
-offset_left = 960.0
+offset_left = 896.0
 offset_top = 576.0
-offset_right = 1216.0
+offset_right = 1152.0
 offset_bottom = 640.0
 theme = SubResource("Theme_0wu4t")
 theme_override_font_sizes/font_size = 36
@@ -236,4 +236,5 @@ text = "Back
 "
 
 [connection signal="pressed" from="Copy" to="." method="_on_copy_pressed"]
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

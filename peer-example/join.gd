@@ -4,6 +4,7 @@ var playerName = preload("res://player_name.tscn")
 
 var gc
 var container
+var joinOnce = false
 
 func _ready():
 	gc = get_tree().get_root().get_node("main")
@@ -21,15 +22,16 @@ func render_players():
 	
 	# Add known players
 	for id in gc.knownPeers:
-		var pName = playerName.instantiate()
-		pName.get_node("Label").set_text(gc.knownPeers[id]["username"])
-		container.add_child(pName)
+		if not (id == gc.peerId):
+			var pName = playerName.instantiate()
+			pName.get_node("Label").set_text(gc.knownPeers[id]["username"])
+			container.add_child(pName)
+
+func fieldEmpty():
+	return $LineEdit_Name.get_text() == "" or $LineEdit_Code.get_text() == ""
 
 func _process(delta):
-	var canSubmit = false
-	if ($LineEdit_Name.get_text() == "" or $LineEdit_Code.get_text() == ""):
-		canSubmit = true
-	$Join.set_disabled(canSubmit)
+	$Join.set_disabled(fieldEmpty() or joinOnce)
 	gc.username = $LineEdit_Name.get_text()
 	render_players()
 
@@ -41,6 +43,7 @@ func _on_join_pressed():
 		var userName = $LineEdit_Name.get_text()
 		var joinCode = $LineEdit_Code.get_text()
 		gc.connect_to_peer(joinCode, {"username": userName})
+		joinOnce = true
 
 func _on_paste_pressed():
 	var text = DisplayServer.clipboard_get()

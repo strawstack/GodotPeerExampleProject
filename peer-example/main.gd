@@ -21,9 +21,14 @@ var onData = null
 var HEARTBEAT_INTERVAL = 1000
 var UPDATE_INTERVAL = 1000
 
+var VIEW_WIDTH = 1216
+var VIEW_HEIGHT = 704
+
 var hostData = {
-	"lastUpdate": 0
+	"lastUpdate": 0,
+	"position": {"x": VIEW_WIDTH/2, "y": VIEW_HEIGHT/2}
 }
+
 var peerData = {
 	"lastHeartbeat": 0
 }
@@ -37,6 +42,7 @@ var dataType = {
 	"heartbeat": "heartbeat",
 	"data": "data",
 	"gamestate": "gamestate",
+	"event": "event"
 }
 
 var gameState = state["WAIT"]
@@ -68,19 +74,35 @@ func _processHost(delta):
 	if hostData["lastUpdate"] >= UPDATE_INTERVAL:
 		send_gamestate()
 
+func _process(delta):
+	if peerId:
+		if (not isHost):
+			_processPeer(delta)
+		else:
+			_processHost(delta)
+
 func send_gamestate():
 	hostData["lastUpdate"] = 0
+	knownPeers[peerId] = {
+		"username": username,
+		"data": {
+			"position": hostData["position"],
+		}
+	}
 	for id in knownPeers:
 		send_data(id, {
 			"type": "gamestate",
 			"peers": knownPeers
 		})
 
-func _process(delta):
-	if (not isHost) and hostId:
-		_processPeer(delta)
-	else:
-		_processHost(delta)
+func send_game_start():
+	changeScene("res://game.tscn")
+	for id in knownPeers:
+		if not (id == peerId):
+			send_data(id, {
+				"type": "event",
+				"name": "game_start"
+			})
 
 func changeScene(scenePath):
 	_deferred_changeScene.call_deferred(scenePath)
@@ -129,14 +151,14 @@ func _on_connection(args):
 			"username": options["username"],
 			"heartbeat": Time.get_ticks_msec(),
 			"data": {
-				"position": {"x": 0, "y": 0},
+				"position": {"x": VIEW_WIDTH/2, "y": VIEW_HEIGHT/2},
 			}
 		}
 
 func _on_data(args):
-	var data = JSON.parse_string(args[0])
-	var type = data["type"]
-	var id = data["id"] # Every message has a sender ID
+	var msg = JSON.parse_string(args[0])
+	var type = msg["type"]
+	var id = msg["id"] # Every message has a sender ID
 	
 	if isHost:
 		# All messages are used to update heartbeat 
@@ -144,18 +166,21 @@ func _on_data(args):
 
 	# Host receives "data" from Peers
 	if (type == dataType["data"]):
-		data.erase("id") # Don't include sender ID in data
-		knownPeers[id]["data"] = data
+		knownPeers[id]["data"] = msg["data"]
 
 	# Peers receive "gamestate" from Host
 	elif (type == dataType["gamestate"]):
-		var peers = data["peers"]
+		var peers = msg["peers"]
 		for pid in peers:
 			var peer = peers[pid]
 			knownPeers[pid] = {
 				"username": peer["username"],
 				"data": peer["data"]
 			}
+
+	elif (type == dataType["event"]):
+		if msg["name"] == "game_start":
+			changeScene("res://game.tscn")
 
 class MockPeerBridge:
 	var onPeerOpen = null
