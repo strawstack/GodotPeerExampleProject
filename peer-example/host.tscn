@@ -2,6 +2,36 @@
 
 [ext_resource type="Script" uid="uid://ccjgftimrtjyf" path="res://host.gd" id="1_0wu4t"]
 
+[sub_resource type="Theme" id="Theme_c0r1x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_28fj3"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.2, 0.2, 0.2, 1)
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_60y1r"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.2, 0.2, 0.2, 1)
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
 [sub_resource type="Theme" id="Theme_87kjm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0wu4t"]
@@ -78,8 +108,36 @@ offset_right = 1280.0
 offset_bottom = 728.0
 color = Color(1, 0.74509805, 0.043137256, 1)
 
-[node name="ShareCode" type="Node2D" parent="." unique_id=782093822]
+[node name="Username" type="Node2D" parent="." unique_id=1282617610]
 position = Vector2(64, 64)
+
+[node name="ColorRect" type="ColorRect" parent="Username" unique_id=680755543]
+offset_right = 448.0
+offset_bottom = 64.0
+color = Color(1, 0, 0.43137255, 1)
+
+[node name="Label" type="Label" parent="Username" unique_id=496341345]
+offset_left = 16.0
+offset_right = 384.0
+offset_bottom = 64.0
+theme = SubResource("Theme_c0r1x")
+theme_override_font_sizes/font_size = 42
+text = "Username"
+vertical_alignment = 1
+
+[node name="LineEdit_Name" type="LineEdit" parent="." unique_id=1984266850]
+offset_left = 64.0
+offset_top = 144.0
+offset_right = 512.0
+offset_bottom = 208.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_uneditable_color = Color(1, 1, 1, 0.5019608)
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_28fj3")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_60y1r")
+
+[node name="ShareCode" type="Node2D" parent="." unique_id=782093822]
+position = Vector2(64, 272)
 
 [node name="ColorRect" type="ColorRect" parent="ShareCode" unique_id=1051902863]
 offset_right = 448.0
@@ -95,11 +153,11 @@ theme_override_font_sizes/font_size = 42
 text = "Share Code"
 vertical_alignment = 1
 
-[node name="LineEdit" type="LineEdit" parent="." unique_id=128626548]
+[node name="LineEdit_Code" type="LineEdit" parent="." unique_id=128626548]
 offset_left = 64.0
-offset_top = 160.0
-offset_right = 512.0
-offset_bottom = 224.0
+offset_top = 352.0
+offset_right = 368.0
+offset_bottom = 416.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_uneditable_color = Color(1, 1, 1, 0.5019608)
 theme_override_font_sizes/font_size = 21
@@ -109,9 +167,9 @@ editable = false
 
 [node name="Copy" type="Button" parent="." unique_id=609827549]
 offset_left = 384.0
-offset_top = 240.0
+offset_top = 352.0
 offset_right = 512.0
-offset_bottom = 304.0
+offset_bottom = 416.0
 theme = SubResource("Theme_0wu4t")
 theme_override_font_sizes/font_size = 36
 theme_override_styles/normal = SubResource("StyleBoxFlat_c0r1x")
@@ -153,7 +211,7 @@ layout_mode = 2
 theme_override_constants/separation = 16
 
 [node name="Start" type="Button" parent="." unique_id=915892206]
-offset_left = 1024.0
+offset_left = 960.0
 offset_top = 576.0
 offset_right = 1216.0
 offset_bottom = 640.0
@@ -161,14 +219,14 @@ theme = SubResource("Theme_0wu4t")
 theme_override_font_sizes/font_size = 36
 theme_override_styles/normal = SubResource("StyleBoxFlat_c0r1x")
 theme_override_styles/hover = SubResource("StyleBoxFlat_p3hcb")
-text = "Start
+text = "Start Game
 
 "
 
 [node name="Back" type="Button" parent="." unique_id=1042496573]
 offset_left = 64.0
 offset_top = 576.0
-offset_right = 256.0
+offset_right = 192.0
 offset_bottom = 640.0
 theme = SubResource("Theme_0wu4t")
 theme_override_font_sizes/font_size = 36

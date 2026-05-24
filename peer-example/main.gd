@@ -3,6 +3,7 @@ extends Node2D
 var is_web := false
 var peer_bridge = null
 var peerId = null
+var username = null
 var isHost = null
 
 # Peer only properties
