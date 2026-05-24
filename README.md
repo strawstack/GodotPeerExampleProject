@@ -5,3 +5,7 @@ This project uses "index.custom.html" as a custom html template for a Godot web 
 ## Local Server
 
 The root of this project contains index.js and package.json which will run a local server at "http://localhost:3000" with the following commands: "npm install" and "npm start".
+
+## View on Itch io
+
+https://richardhayes.itch.io/peerjs-example
