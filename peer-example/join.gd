@@ -47,4 +47,6 @@ func _on_join_pressed():
 
 func _on_paste_pressed():
 	var text = DisplayServer.clipboard_get()
+	await get_tree().process_frame
+	text = DisplayServer.clipboard_get() # Copy twice due to browser security
 	$LineEdit_Code.set_text(text)
